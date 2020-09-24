@@ -15,7 +15,7 @@ func ListBuildpackRegistries(logger logging.Logger, cfg config.Config) *cobra.Co
 	cmd := &cobra.Command{
 		Use:   "list-buildpack-registries",
 		Args:  cobra.NoArgs,
-		Short: "Lists all buildpack registries",
+		Short: prependExperimental("Lists all buildpack registries"),
 		RunE: logError(logger, func(cmd *cobra.Command, args []string) error {
 			for _, registry := range cfg.Registries {
 				registryFmt := fmtRegistry(registry, registry.Name == cfg.DefaultRegistryName, logger.IsVerbose())
