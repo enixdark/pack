@@ -38,9 +38,10 @@ func PackageBuildpack(logger logging.Logger, client BuildpackPackager, packageCo
 	var flags PackageBuildpackFlags
 
 	cmd := &cobra.Command{
-		Use:   `package-buildpack <name> --config <package-config-path>`,
-		Short: "Package buildpack in OCI format.",
-		Args:  cobra.ExactValidArgs(1),
+		Use:     `package-buildpack <name> --config <package-config-path>`,
+		Args:    cobra.ExactValidArgs(1),
+		Short:   "Package buildpack in OCI format.",
+		Example: "pack package-buildpack my-buildpack --config ./package.toml",
 		RunE: logError(logger, func(cmd *cobra.Command, args []string) error {
 			if err := validatePackageBuildpackFlags(&flags, logger); err != nil {
 				return err
